@@ -36,7 +36,7 @@ jobs:
         run: pip install -r requirements.txt pytest
       - name: Testy
         if: steps.clock.outputs.run == 'true'
-        run: pytest -q
+        run: python -m pytest -q
       - name: Generowanie kalendarza
         if: steps.clock.outputs.run == 'true'
         run: python generate_calendar.py
