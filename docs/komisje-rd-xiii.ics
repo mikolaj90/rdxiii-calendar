@@ -9,7 +9,7 @@ BEGIN:VEVENT
 SUMMARY:👩‍🏫 Komisja Edukacji
 DTSTART;TZID=Europe/Warsaw:20260821T180000
 DTEND;TZID=Europe/Warsaw:20260821T190000
-DTSTAMP:20260715T093459Z
+DTSTAMP:20260715T095257Z
 UID:rdxiii-175938-32-2026@mikolaj90.github.io
 DESCRIPTION:Komisja Edukacji Rady Dzielnicy XIII Podgórze\nNumer posiedze
  nia: 32/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/zalacznik
@@ -17,6 +17,116 @@ DESCRIPTION:Komisja Edukacji Rady Dzielnicy XIII Podgórze\nNumer posiedze
  _id=175938
 LOCATION:Rynek Podgórski 1\, Kraków
 URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/693625/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🏛️ Sesja Rady Dzielnicy XIII
+DTSTART;TZID=Europe/Warsaw:20260831T180000
+DTEND;TZID=Europe/Warsaw:20260831T220000
+DTSTAMP:20260715T095257Z
+UID:rdxiii-59877-2026-08-31@mikolaj90.github.io
+DESCRIPTION:Sesja Rady Dzielnicy XIII Podgórze\n\nSzczegóły sesji: http
+ s://www.bip.krakow.pl/?dok_id=232585\nTerminy sesji: https://www.bip.krako
+ w.pl/?dok_id=232585
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/?dok_id=232585
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🏛️ Sesja Rady Dzielnicy XIII
+DTSTART;TZID=Europe/Warsaw:20260922T180000
+DTEND;TZID=Europe/Warsaw:20260922T220000
+DTSTAMP:20260715T095257Z
+UID:rdxiii-59877-2026-09-22@mikolaj90.github.io
+DESCRIPTION:Sesja Rady Dzielnicy XIII Podgórze\n\nSzczegóły sesji: http
+ s://www.bip.krakow.pl/?dok_id=232585\nTerminy sesji: https://www.bip.krako
+ w.pl/?dok_id=232585
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/?dok_id=232585
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🏛️ Sesja Rady Dzielnicy XIII
+DTSTART;TZID=Europe/Warsaw:20261020T180000
+DTEND;TZID=Europe/Warsaw:20261020T220000
+DTSTAMP:20260715T095257Z
+UID:rdxiii-59877-2026-10-20@mikolaj90.github.io
+DESCRIPTION:Sesja Rady Dzielnicy XIII Podgórze\n\nSzczegóły sesji: http
+ s://www.bip.krakow.pl/?dok_id=232585\nTerminy sesji: https://www.bip.krako
+ w.pl/?dok_id=232585
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/?dok_id=232585
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🏛️ Sesja Rady Dzielnicy XIII
+DTSTART;TZID=Europe/Warsaw:20261117T180000
+DTEND;TZID=Europe/Warsaw:20261117T220000
+DTSTAMP:20260715T095257Z
+UID:rdxiii-59877-2026-11-17@mikolaj90.github.io
+DESCRIPTION:Sesja Rady Dzielnicy XIII Podgórze\n\nSzczegóły sesji: http
+ s://www.bip.krakow.pl/?dok_id=232585\nTerminy sesji: https://www.bip.krako
+ w.pl/?dok_id=232585
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/?dok_id=232585
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🏛️ Sesja Rady Dzielnicy XIII
+DTSTART;TZID=Europe/Warsaw:20261215T180000
+DTEND;TZID=Europe/Warsaw:20261215T220000
+DTSTAMP:20260715T095257Z
+UID:rdxiii-59877-2026-12-15@mikolaj90.github.io
+DESCRIPTION:Sesja Rady Dzielnicy XIII Podgórze\n\nSzczegóły sesji: http
+ s://www.bip.krakow.pl/?dok_id=232585\nTerminy sesji: https://www.bip.krako
+ w.pl/?dok_id=232585
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/?dok_id=232585
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Komisja jutro

@@ -47,6 +47,8 @@ class Meeting:
     source_page: str
     attachment_card: str
     cancelled: bool = False
+    duration_hours: int = 1
+    kind: str = "commission"
 
     @property
     def uid(self) -> str:
@@ -59,7 +61,7 @@ class Meeting:
 
     @property
     def ends_at(self) -> datetime:
-        return self.starts_at + timedelta(hours=1)
+        return self.starts_at + timedelta(hours=self.duration_hours)
 
 
 class ParseError(RuntimeError):
@@ -197,6 +199,7 @@ class BipClient:
             match = address.search(line)
             if match:
                 value = re.sub(r"\s+w\s+Krakowie\b", "", match[1], flags=re.I).strip(" ,.")
+                value = re.sub(r"^ul\.\s+(Rynek|Plac)\s+", r"\1 ", value, flags=re.I)
                 return value if "krak" in value.lower() else value + ", Kraków"
         return ""
 
@@ -210,3 +213,71 @@ class BipClient:
 def load_commissions(path: Path) -> list[Commission]:
     import json
     return [Commission(**item) for item in json.loads(path.read_text(encoding="utf-8"))]
+
+
+class SessionClient(BipClient):
+    """Odczytuje stronę zbiorczą roczników i terminy sesji z każdego roku."""
+
+    INDEX_URL = f"{BIP_ROOT}?dok_id=59877"
+    SESSION = Commission(
+        59877,
+        "Sesja Rady Dzielnicy XIII",
+        "Sesja Rady Dzielnicy XIII Podgórze",
+        "🏛️",
+    )
+
+    def meetings(self, since: date) -> tuple[list[Meeting], list[str]]:
+        index = BeautifulSoup(self.get(self.INDEX_URL).text, "html.parser")
+        year_pages: dict[int, str] = {}
+        for anchor in index.find_all("a", href=True):
+            label = anchor.get_text(" ", strip=True)
+            if re.fullmatch(r"20\d{2}", label):
+                year = int(label)
+                if year >= since.year:
+                    year_pages[year] = urljoin(self.INDEX_URL, str(anchor["href"]))
+
+        result: list[Meeting] = []
+        warnings: list[str] = []
+        for year, page_url in sorted(year_pages.items()):
+            soup = BeautifulSoup(self.get(page_url).text, "html.parser")
+            for paragraph in soup.find_all(["p", "li"]):
+                text = " ".join(paragraph.stripped_strings)
+                dates = extract_dates(text, year)
+                if not dates or "godz" not in text.lower():
+                    continue
+                meeting_date = dates[0]
+                if meeting_date < since:
+                    continue
+                match = None
+                for pattern in TIME_PATTERNS:
+                    match = pattern.search(text)
+                    if match:
+                        break
+                if not match:
+                    warnings.append(f"Sesja {meeting_date}: nie rozpoznano godziny")
+                    continue
+                try:
+                    start_time = time(int(match[1]), int(match[2]))
+                except ValueError:
+                    warnings.append(f"Sesja {meeting_date}: niepoprawna godzina")
+                    continue
+                location = self._location(text)
+                details = page_url
+                link = paragraph.find("a", href=True)
+                if link:
+                    details = urljoin(page_url, str(link["href"]))
+                result.append(Meeting(
+                    self.SESSION,
+                    "",
+                    meeting_date,
+                    start_time,
+                    location,
+                    page_url,
+                    details,
+                    self._is_cancelled(text),
+                    4,
+                    "session",
+                ))
+        if not year_pages:
+            warnings.append("Nie znaleziono żadnego bieżącego ani przyszłego rocznika sesji")
+        return result, warnings

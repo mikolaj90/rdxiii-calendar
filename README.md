@@ -1,10 +1,12 @@
 # Komisje RD XIII – kalendarz
 
-Automatyczny kalendarz posiedzeń komisji Rady Dzielnicy XIII Podgórze. Skrypt codziennie odczytuje strony komisji w BIP Krakowa, pobiera PDF-y „Zwołanie posiedzenia” i generuje kalendarz iCalendar.
+Automatyczny kalendarz posiedzeń komisji i sesji Rady Dzielnicy XIII Podgórze. Skrypt codziennie odczytuje strony BIP Krakowa, pobiera PDF-y „Zwołanie posiedzenia” komisji i generuje kalendarz iCalendar.
 
 ## Zasady
 
 - obejmuje 11 komisji i posiedzenia od 15 lipca 2026 r.;
+- automatycznie wykrywa roczniki oraz przyszłe sesje Rady Dzielnicy;
+- sesja jest zapisywana na 4 godziny;
 - data jest odczytywana ze strony BIP i potwierdzana w PDF-ie;
 - godzina oraz lokalizacja pochodzą z PDF-u;
 - posiedzenie trwa domyślnie 60 minut;

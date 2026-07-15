@@ -30,12 +30,20 @@ def build_calendar(meetings: list[Meeting]) -> bytes:
         event.add("dtend", meeting.ends_at.replace(tzinfo=WARSAW))
         if meeting.location:
             event.add("location", meeting.location)
-        event.add("description", (
-            f"{meeting.commission.full_name}\n"
-            f"Numer posiedzenia: {meeting.number or 'nie podano'}\n\n"
-            f"Zwołanie posiedzenia: {meeting.attachment_card}\n"
-            f"Strona komisji: {meeting.source_page}"
-        ))
+        if meeting.kind == "session":
+            description = (
+                f"{meeting.commission.full_name}\n\n"
+                f"Szczegóły sesji: {meeting.attachment_card}\n"
+                f"Terminy sesji: {meeting.source_page}"
+            )
+        else:
+            description = (
+                f"{meeting.commission.full_name}\n"
+                f"Numer posiedzenia: {meeting.number or 'nie podano'}\n\n"
+                f"Zwołanie posiedzenia: {meeting.attachment_card}\n"
+                f"Strona komisji: {meeting.source_page}"
+            )
+        event.add("description", description)
         event.add("url", meeting.attachment_card)
         for delta, label in ((timedelta(hours=-24), "Komisja jutro"), (timedelta(hours=-1), "Komisja za godzinę")):
             alarm = Alarm()
@@ -45,4 +53,3 @@ def build_calendar(meetings: list[Meeting]) -> bytes:
             event.add_component(alarm)
         calendar.add_component(event)
     return calendar.to_ical()
-

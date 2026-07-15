@@ -4,7 +4,7 @@ import logging
 from datetime import date
 from pathlib import Path
 
-from rdxiii_calendar.bip import BipClient, load_commissions
+from rdxiii_calendar.bip import BipClient, SessionClient, load_commissions
 from rdxiii_calendar.calendar import build_calendar
 
 
@@ -22,6 +22,10 @@ def main() -> int:
         meetings.extend(found)
         warnings.extend(f"{commission.name}: {item}" for item in problems)
         logging.info("%s: %d posiedzeń", commission.name, len(found))
+    sessions, session_problems = SessionClient().meetings(args.since)
+    meetings.extend(sessions)
+    warnings.extend(f"Sesje: {item}" for item in session_problems)
+    logging.info("Sesje Rady Dzielnicy XIII: %d terminów", len(sessions))
     if warnings:
         raise SystemExit("Nie zaktualizowano kalendarza z powodu niejednoznacznych danych:\n" + "\n".join(warnings))
     args.output.parent.mkdir(parents=True, exist_ok=True)
