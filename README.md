@@ -22,4 +22,4 @@ pytest -q
 python generate_calendar.py
 ```
 
-Wynik zostanie zapisany jako `public/komisje-rd-xiii.ics`.
+Wynik zostanie zapisany jako `docs/komisje-rd-xiii.ics` i opublikowany przez GitHub Pages.
