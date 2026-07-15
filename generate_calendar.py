@@ -29,7 +29,8 @@ def main() -> int:
     if warnings:
         raise SystemExit("Nie zaktualizowano kalendarza z powodu niejednoznacznych danych:\n" + "\n".join(warnings))
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_bytes(build_calendar(meetings))
+    previous = args.output.read_bytes() if args.output.exists() else None
+    args.output.write_bytes(build_calendar(meetings, previous=previous))
     logging.info("Zapisano %d wydarzeń w %s", len(meetings), args.output)
     return 0
 
