@@ -11,7 +11,7 @@ from rdxiii_calendar.calendar import build_calendar
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--since", type=date.fromisoformat, default=date(2026, 7, 15))
-    parser.add_argument("--output", type=Path, default=Path("public/komisje-rd-xiii.ics"))
+    parser.add_argument("--output", type=Path, default=Path("docs/komisje-rd-xiii.ics"))
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
     client = BipClient()
@@ -32,4 +32,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
