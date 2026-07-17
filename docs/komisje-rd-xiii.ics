@@ -6,15 +6,38 @@ METHOD:PUBLISH
 X-WR-CALNAME:Komisje RD XIII
 X-WR-TIMEZONE:Europe/Warsaw
 BEGIN:VEVENT
+SUMMARY:🎭 KiD
+DTSTART;TZID=Europe/Warsaw:20260804T180000
+DTEND;TZID=Europe/Warsaw:20260804T190000
+DTSTAMP:20260717T064215Z
+UID:rdxiii-175944-33-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Kultury i Dialogu Rady Dzielnicy XIII Podgórze\nNumer
+  posiedzenia: 33/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/
+ zalaczniki/dokumenty/n/695878/karta\nStrona komisji: https://www.bip.krako
+ w.pl/?dok_id=175944&metka=1
+LOCATION:ul. Smolki 11a\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/695878/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:👩‍🏫 Komisja Edukacji
 DTSTART;TZID=Europe/Warsaw:20260821T180000
 DTEND;TZID=Europe/Warsaw:20260821T190000
-DTSTAMP:20260715T095257Z
+DTSTAMP:20260717T064215Z
 UID:rdxiii-175938-32-2026@mikolaj90.github.io
 DESCRIPTION:Komisja Edukacji Rady Dzielnicy XIII Podgórze\nNumer posiedze
  nia: 32/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/zalacznik
  i/dokumenty/n/693625/karta\nStrona komisji: https://www.bip.krakow.pl/?dok
- _id=175938
+ _id=175938&metka=1
 LOCATION:Rynek Podgórski 1\, Kraków
 URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/693625/karta
 BEGIN:VALARM
