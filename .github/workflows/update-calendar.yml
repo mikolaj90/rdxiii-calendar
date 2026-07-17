@@ -2,6 +2,15 @@ name: Aktualizacja kalendarza
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "rdxiii_calendar/**"
+      - "config/**"
+      - "tests/**"
+      - "generate_calendar.py"
+      - "requirements.txt"
+      - ".github/workflows/update-calendar.yml"
   schedule:
     - cron: "30 13 * * *"
     - cron: "30 14 * * *"
@@ -18,7 +27,7 @@ jobs:
         id: clock
         run: |
           hour=$(TZ=Europe/Warsaw date +%H)
-          if [[ "$hour" == "15" || "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+          if [[ "$hour" == "15" || "${{ github.event_name }}" != "schedule" ]]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
