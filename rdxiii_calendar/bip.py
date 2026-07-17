@@ -34,7 +34,7 @@ class Commission:
 
     @property
     def page_url(self) -> str:
-        return f"{BIP_ROOT}?dok_id={self.document_id}"
+        return f"{BIP_ROOT}?dok_id={self.document_id}&metka=1"
 
 
 @dataclass
@@ -218,7 +218,7 @@ def load_commissions(path: Path) -> list[Commission]:
 class SessionClient(BipClient):
     """Odczytuje stronę zbiorczą roczników i terminy sesji z każdego roku."""
 
-    INDEX_URL = f"{BIP_ROOT}?dok_id=59877"
+    INDEX_URL = f"{BIP_ROOT}?dok_id=59877&metka=1"
     SESSION = Commission(
         59877,
         "Sesja Rady Dzielnicy XIII",
