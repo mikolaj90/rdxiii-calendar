@@ -12,45 +12,37 @@ on:
       - "requirements.txt"
       - ".github/workflows/update-calendar.yml"
   schedule:
+    # Dwa uruchomienia pokrywają czas letni i zimowy w Warszawie.
+    # Oba naprawdę wykonują generator; stabilny ICS zapobiega zbędnym commitom.
     - cron: "30 13 * * *"
     - cron: "30 14 * * *"
 
 permissions:
   contents: write
 
+concurrency:
+  group: update-calendar
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v5
-      - name: Sprawdź lokalną godzinę
-        id: clock
-        run: |
-          hour=$(TZ=Europe/Warsaw date +%H)
-          if [[ "$hour" == "15" || "${{ github.event_name }}" != "schedule" ]]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "run=false" >> "$GITHUB_OUTPUT"
-          fi
       - uses: actions/setup-python@v6
-        if: steps.clock.outputs.run == 'true'
         with:
           python-version: "3.12"
           cache: pip
       - name: Narzędzia OCR
-        if: steps.clock.outputs.run == 'true'
         run: sudo apt-get update && sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-pol
       - name: Zależności
-        if: steps.clock.outputs.run == 'true'
         run: pip install -r requirements.txt pytest
       - name: Testy
-        if: steps.clock.outputs.run == 'true'
         run: python -m pytest -q
       - name: Generowanie kalendarza
-        if: steps.clock.outputs.run == 'true'
         run: python generate_calendar.py
       - name: Zapis aktualizacji
-        if: steps.clock.outputs.run == 'true'
         run: |
           git config user.name "rdxiii-calendar[bot]"
           git config user.email "rdxiii-calendar[bot]@users.noreply.github.com"
