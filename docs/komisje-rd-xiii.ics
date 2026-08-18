@@ -120,17 +120,17 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:👩‍🏫 Komisja Edukacji
-DTSTART;TZID=Europe/Warsaw:20260821T180000
-DTEND;TZID=Europe/Warsaw:20260821T190000
-DTSTAMP:20260717T064215Z
-UID:rdxiii-175938-32-2026@mikolaj90.github.io
-DESCRIPTION:Komisja Edukacji Rady Dzielnicy XIII Podgórze\nNumer posiedze
- nia: 32/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/zalacznik
- i/dokumenty/n/693625/karta\nStrona komisji: https://www.bip.krakow.pl/?dok
- _id=175938&metka=1
-LOCATION:Rynek Podgórski 1\, Kraków
-URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/693625/karta
+SUMMARY:🏥 Komisja Społeczna i Zdrowia
+DTSTART;TZID=Europe/Warsaw:20260821T170000
+DTEND;TZID=Europe/Warsaw:20260821T180000
+DTSTAMP:20260818T140844Z
+UID:rdxiii-175965-32-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Społeczna i Zdrowia Rady Dzielnicy XIII Podgórze\nNu
+ mer posiedzenia: 32/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.
+ pl/zalaczniki/dokumenty/n/703139/karta\nStrona komisji: https://www.bip.kr
+ akow.pl/?dok_id=175965&metka=1
+LOCATION:al. Dembowskiego 12\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/703139/karta
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Komisja jutro
@@ -143,17 +143,17 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:🏥 Komisja Społeczna i Zdrowia
-DTSTART;TZID=Europe/Warsaw:20260821T190000
-DTEND;TZID=Europe/Warsaw:20260821T200000
-DTSTAMP:20260727T065223Z
-UID:rdxiii-175965-33-2026@mikolaj90.github.io
-DESCRIPTION:Komisja Społeczna i Zdrowia Rady Dzielnicy XIII Podgórze\nNu
- mer posiedzenia: 33/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.
- pl/zalaczniki/dokumenty/n/696199/karta\nStrona komisji: https://www.bip.kr
- akow.pl/?dok_id=175965&metka=1
-LOCATION:Rynek Podgórski 1\, Kraków
-URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/696199/karta
+SUMMARY:👩‍🏫 Komisja Edukacji
+DTSTART;TZID=Europe/Warsaw:20260821T180000
+DTEND;TZID=Europe/Warsaw:20260821T190000
+DTSTAMP:20260818T140844Z
+UID:rdxiii-175938-32-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Edukacji Rady Dzielnicy XIII Podgórze\nNumer posiedze
+ nia: 32/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/zalacznik
+ i/dokumenty/n/703133/karta\nStrona komisji: https://www.bip.krakow.pl/?dok
+ _id=175938&metka=1
+LOCATION:al. Dembowskiego 12\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/703133/karta
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Komisja jutro
