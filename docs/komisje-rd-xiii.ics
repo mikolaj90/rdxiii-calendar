@@ -166,6 +166,29 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:🏗️ Komisja Infrastruktury
+DTSTART;TZID=Europe/Warsaw:20260824T183000
+DTEND;TZID=Europe/Warsaw:20260824T193000
+DTSTAMP:20260819T140844Z
+UID:rdxiii-175941-32-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Infrastruktury Rady Dzielnicy XIII Podgórze\nNumer po
+ siedzenia: 32/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/zal
+ aczniki/dokumenty/n/703559/karta\nStrona komisji: https://www.bip.krakow.p
+ l/?dok_id=175941&metka=1
+LOCATION:ul. Gumniska 32\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/703559/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:🏛️ Sesja Rady Dzielnicy XIII
 DTSTART;TZID=Europe/Warsaw:20260831T180000
 DTEND;TZID=Europe/Warsaw:20260831T220000
