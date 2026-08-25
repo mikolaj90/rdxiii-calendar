@@ -189,6 +189,29 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:👮‍♂️ Komisja Praworządności i Bezpieczeństwa
+DTSTART;TZID=Europe/Warsaw:20260831T170000
+DTEND;TZID=Europe/Warsaw:20260831T180000
+DTSTAMP:20260825T142144Z
+UID:rdxiii-175953-32-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Praworządności i Bezpieczeństwa Rady Dzielnicy XIII
+  Podgórze\nNumer posiedzenia: 32/2026\n\nZwołanie posiedzenia: https://w
+ ww.bip.krakow.pl/zalaczniki/dokumenty/n/704633/karta\nStrona komisji: http
+ s://www.bip.krakow.pl/?dok_id=175953&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/704633/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:🏛️ Sesja Rady Dzielnicy XIII
 DTSTART;TZID=Europe/Warsaw:20260831T180000
 DTEND;TZID=Europe/Warsaw:20260831T220000
