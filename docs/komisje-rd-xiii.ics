@@ -235,6 +235,75 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:🎭 KiD
+DTSTART;TZID=Europe/Warsaw:20260908T173000
+DTEND;TZID=Europe/Warsaw:20260908T183000
+DTSTAMP:20260902T171623Z
+UID:rdxiii-175944-34-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Kultury i Dialogu Rady Dzielnicy XIII Podgórze\nNumer
+  posiedzenia: 34/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/
+ zalaczniki/dokumenty/n/706790/karta\nStrona komisji: https://www.bip.krako
+ w.pl/?dok_id=175944&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/706790/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🚌 TORD
+DTSTART;TZID=Europe/Warsaw:20260908T183000
+DTEND;TZID=Europe/Warsaw:20260908T193000
+DTSTAMP:20260902T171623Z
+UID:rdxiii-175977-22-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Transportu i Organizacji Ruchu Drogowego Rady Dzielnic
+ y XIII Podgórze\nNumer posiedzenia: 22/2026\n\nZwołanie posiedzenia: htt
+ ps://www.bip.krakow.pl/zalaczniki/dokumenty/n/706796/karta\nStrona komisji
+ : https://www.bip.krakow.pl/?dok_id=175977&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/706796/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📐 Komisja Planowania Przestrzennego
+DTSTART;TZID=Europe/Warsaw:20260909T173000
+DTEND;TZID=Europe/Warsaw:20260909T183000
+DTSTAMP:20260902T171623Z
+UID:rdxiii-175950-33-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Planowania Przestrzennego Rady Dzielnicy XIII Podgórz
+ e\nNumer posiedzenia: 33/2026\n\nZwołanie posiedzenia: https://www.bip.kr
+ akow.pl/zalaczniki/dokumenty/n/706793/karta\nStrona komisji: https://www.b
+ ip.krakow.pl/?dok_id=175950&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/706793/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:👩‍🏫 Komisja Edukacji
 DTSTART;TZID=Europe/Warsaw:20260911T180000
 DTEND;TZID=Europe/Warsaw:20260911T190000
