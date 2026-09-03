@@ -29,30 +29,6 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:ODWOŁANE – 🌿 Komisja Zieleni i Ochrony Środowiska
-DTSTART;TZID=Europe/Warsaw:20260804T190000
-DTEND;TZID=Europe/Warsaw:20260804T200000
-DTSTAMP:20260828T231024Z
-UID:rdxiii-175971-29-2026@mikolaj90.github.io
-DESCRIPTION:Komisja Zieleni i Ochrony Środowiska Rady Dzielnicy XIII Podg
- órze\nNumer posiedzenia: 29/2026\n\nZwołanie posiedzenia: https://www.bi
- p.krakow.pl/zalaczniki/dokumenty/n/699538/karta\nStrona komisji: https://w
- ww.bip.krakow.pl/?dok_id=175971&metka=1
-LOCATION:ul. Smolki 11a\, Kraków
-STATUS:CANCELLED
-URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/699538/karta
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Komisja jutro
-TRIGGER:-P1D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Komisja za godzinę
-TRIGGER:-PT1H
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:🧑‍🎓 Komisja Współpracy z Młodzieżą
 DTSTART;TZID=Europe/Warsaw:20260805T164500
 DTEND;TZID=Europe/Warsaw:20260805T174500
@@ -292,6 +268,29 @@ DESCRIPTION:Komisja Planowania Przestrzennego Rady Dzielnicy XIII Podgórz
  ip.krakow.pl/?dok_id=175950&metka=1
 LOCATION:Rynek Podgórski 1\, Kraków
 URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/706793/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🌿 Komisja Zieleni i Ochrony Środowiska
+DTSTART;TZID=Europe/Warsaw:20260909T183000
+DTEND;TZID=Europe/Warsaw:20260909T193000
+DTSTAMP:20260903T170802Z
+UID:rdxiii-175971-29-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Zieleni i Ochrony Środowiska Rady Dzielnicy XIII Podg
+ órze\nNumer posiedzenia: 29/2026\n\nZwołanie posiedzenia: https://www.bi
+ p.krakow.pl/zalaczniki/dokumenty/n/706958/karta\nStrona komisji: https://w
+ ww.bip.krakow.pl/?dok_id=175971&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/706958/karta
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Komisja jutro
