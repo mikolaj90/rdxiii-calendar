@@ -348,6 +348,29 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:🏥 Komisja Społeczna i Zdrowia
+DTSTART;TZID=Europe/Warsaw:20260925T190000
+DTEND;TZID=Europe/Warsaw:20260925T200000
+DTSTAMP:20260904T170009Z
+UID:rdxiii-175965-33-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Społeczna i Zdrowia Rady Dzielnicy XIII Podgórze\nNu
+ mer posiedzenia: 33/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.
+ pl/zalaczniki/dokumenty/n/707219/karta\nStrona komisji: https://www.bip.kr
+ akow.pl/?dok_id=175965&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/707219/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:🏛️ Sesja Rady Dzielnicy XIII
 DTSTART;TZID=Europe/Warsaw:20261020T180000
 DTEND;TZID=Europe/Warsaw:20261020T220000
@@ -358,6 +381,29 @@ DESCRIPTION:Sesja Rady Dzielnicy XIII Podgórze\n\nSzczegóły sesji: http
  w.pl/?dok_id=232585
 LOCATION:Rynek Podgórski 1\, Kraków
 URL:https://www.bip.krakow.pl/?dok_id=232585
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🕵️‍♂️ Komisja Rewizyjna
+DTSTART;TZID=Europe/Warsaw:20261021T173000
+DTEND;TZID=Europe/Warsaw:20261021T183000
+DTSTAMP:20260904T170009Z
+UID:rdxiii-175962-22-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Rewizyjna Rady Dzielnicy XIII Podgórze\nNumer posiedz
+ enia: 22/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/zalaczni
+ ki/dokumenty/n/613300/karta\nStrona komisji: https://www.bip.krakow.pl/?do
+ k_id=175962&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/613300/karta
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Komisja jutro
