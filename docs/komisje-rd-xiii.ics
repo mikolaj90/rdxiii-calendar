@@ -326,6 +326,19 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:⚠️ Komisja Praworządności i Bezpieczeństwa – godzina niez
+ nana
+DTSTART;VALUE=DATE:20260921
+DTEND;VALUE=DATE:20260922
+DTSTAMP:20260917T090606Z
+UID:rdxiii-175953-33-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Praworządności i Bezpieczeństwa Rady Dzielnicy XIII
+  Podgórze\nNumer posiedzenia: 33/2026\n\nBIP nie opublikował jeszcze zwo
+ łania z godziną i miejscem posiedzenia.\nStrona komisji: https://www.bip
+ .krakow.pl/?dok_id=175953&metka=1
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/661834/karta
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:🏛️ Sesja Rady Dzielnicy XIII
 DTSTART;TZID=Europe/Warsaw:20260922T180000
 DTEND;TZID=Europe/Warsaw:20260922T220000
