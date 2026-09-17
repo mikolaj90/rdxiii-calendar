@@ -68,6 +68,15 @@ class ParseError(RuntimeError):
     pass
 
 
+@dataclass(frozen=True)
+class ParseProblem:
+    message: str
+    blocking: bool = True
+
+    def __str__(self) -> str:
+        return self.message
+
+
 class BipClient:
     def __init__(self, timeout: int = 30) -> None:
         self.session = requests.Session()
@@ -79,10 +88,10 @@ class BipClient:
         response.raise_for_status()
         return response
 
-    def meetings(self, commission: Commission, since: date) -> tuple[list[Meeting], list[str]]:
+    def meetings(self, commission: Commission, since: date) -> tuple[list[Meeting], list[ParseProblem]]:
         soup = BeautifulSoup(self.get(commission.page_url).text, "html.parser")
         result: list[Meeting] = []
-        warnings: list[str] = []
+        warnings: list[ParseProblem] = []
         seen: set[str] = set()
         for block in self._meeting_blocks(soup):
             text = " ".join(block.stripped_strings)
@@ -91,7 +100,7 @@ class BipClient:
             meeting_year = int(number_match[2]) if number_match else None
             dates = extract_dates(text, meeting_year)
             if not dates:
-                warnings.append(f"Brak daty w bloku: {text[:120]}")
+                warnings.append(ParseProblem(f"Brak daty w bloku: {text[:120]}"))
                 continue
             table_date = dates[0]
             if table_date < since:
@@ -101,7 +110,10 @@ class BipClient:
                 continue
             link = self._convocation_link(block)
             if not link:
-                warnings.append(f"Brak linku do zwołania dla {number or table_date}")
+                warnings.append(ParseProblem(
+                    f"Brak linku do zwołania dla {number or table_date} – pominięto wpis",
+                    blocking=False,
+                ))
                 continue
             card_url = urljoin(commission.page_url, link)
             try:
@@ -112,7 +124,7 @@ class BipClient:
                     raise ParseError(f"sprzeczne daty: tabela {table_date}, PDF {pdf_date}")
                 location = self._location(pdf_text)
             except Exception as exc:
-                warnings.append(f"{number or table_date}: {exc}")
+                warnings.append(ParseProblem(f"{number or table_date}: {exc}"))
                 continue
             result.append(Meeting(
                 commission, number, table_date, start_time, location,
@@ -226,7 +238,7 @@ class SessionClient(BipClient):
         "🏛️",
     )
 
-    def meetings(self, since: date) -> tuple[list[Meeting], list[str]]:
+    def meetings(self, since: date) -> tuple[list[Meeting], list[ParseProblem]]:
         index = BeautifulSoup(self.get(self.INDEX_URL).text, "html.parser")
         year_pages: dict[int, str] = {}
         for anchor in index.find_all("a", href=True):
@@ -237,7 +249,7 @@ class SessionClient(BipClient):
                     year_pages[year] = urljoin(self.INDEX_URL, str(anchor["href"]))
 
         result: list[Meeting] = []
-        warnings: list[str] = []
+        warnings: list[ParseProblem] = []
         for year, page_url in sorted(year_pages.items()):
             soup = BeautifulSoup(self.get(page_url).text, "html.parser")
             for paragraph in soup.find_all(["p", "li"]):
@@ -254,12 +266,12 @@ class SessionClient(BipClient):
                     if match:
                         break
                 if not match:
-                    warnings.append(f"Sesja {meeting_date}: nie rozpoznano godziny")
+                    warnings.append(ParseProblem(f"Sesja {meeting_date}: nie rozpoznano godziny"))
                     continue
                 try:
                     start_time = time(int(match[1]), int(match[2]))
                 except ValueError:
-                    warnings.append(f"Sesja {meeting_date}: niepoprawna godzina")
+                    warnings.append(ParseProblem(f"Sesja {meeting_date}: niepoprawna godzina"))
                     continue
                 location = self._location(text)
                 details = page_url
@@ -279,5 +291,5 @@ class SessionClient(BipClient):
                     "session",
                 ))
         if not year_pages:
-            warnings.append("Nie znaleziono żadnego bieżącego ani przyszłego rocznika sesji")
+            warnings.append(ParseProblem("Nie znaleziono żadnego bieżącego ani przyszłego rocznika sesji"))
         return result, warnings

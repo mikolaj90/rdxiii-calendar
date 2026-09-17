@@ -16,18 +16,31 @@ def main() -> int:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
     client = BipClient()
     meetings = []
-    warnings = []
+    blocking_problems = []
     for commission in load_commissions(Path("config/commissions.json")):
         found, problems = client.meetings(commission, args.since)
         meetings.extend(found)
-        warnings.extend(f"{commission.name}: {item}" for item in problems)
+        for problem in problems:
+            message = f"{commission.name}: {problem}"
+            if problem.blocking:
+                blocking_problems.append(message)
+            else:
+                logging.warning(message)
         logging.info("%s: %d posiedzeń", commission.name, len(found))
     sessions, session_problems = SessionClient().meetings(args.since)
     meetings.extend(sessions)
-    warnings.extend(f"Sesje: {item}" for item in session_problems)
+    for problem in session_problems:
+        message = f"Sesje: {problem}"
+        if problem.blocking:
+            blocking_problems.append(message)
+        else:
+            logging.warning(message)
     logging.info("Sesje Rady Dzielnicy XIII: %d terminów", len(sessions))
-    if warnings:
-        raise SystemExit("Nie zaktualizowano kalendarza z powodu niejednoznacznych danych:\n" + "\n".join(warnings))
+    if blocking_problems:
+        raise SystemExit(
+            "Nie zaktualizowano kalendarza z powodu niejednoznacznych danych:\n"
+            + "\n".join(blocking_problems)
+        )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     previous = args.output.read_bytes() if args.output.exists() else None
     args.output.write_bytes(build_calendar(meetings, previous=previous))
