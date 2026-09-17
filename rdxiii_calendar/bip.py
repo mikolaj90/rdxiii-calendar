@@ -131,6 +131,18 @@ class BipClient:
                     raise ParseError(f"sprzeczne daty: tabela {table_date}, PDF {pdf_date}")
                 location = self._location(pdf_text)
             except Exception as exc:
+                if isinstance(exc, ParseError) and str(exc) == "nie znaleziono godziny posiedzenia w PDF-ie":
+                    result.append(Meeting(
+                        commission, number, table_date, None, "",
+                        commission.page_url, card_url,
+                        self._is_cancelled(text), provisional=True,
+                    ))
+                    warnings.append(ParseProblem(
+                        f"{number or table_date}: nie znaleziono godziny w PDF-ie – dodano jako wydarzenie całodniowe",
+                        blocking=False,
+                    ))
+                    seen.add(key)
+                    continue
                 warnings.append(ParseProblem(f"{number or table_date}: {exc}"))
                 continue
             result.append(Meeting(

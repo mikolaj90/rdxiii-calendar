@@ -51,3 +51,37 @@ def test_parse_problem_remains_blocking_for_missing_date():
     assert meetings == []
     assert len(problems) == 1
     assert problems[0].blocking is True
+
+
+class NoTimePdfClient(BipClient):
+    def get(self, url: str):
+        class Response:
+            text = ""
+
+        Response.text = """
+        <table><tr>
+          <td>33/2026</td><td>21.09.2026</td>
+          <td><a href="/z">Zwołanie posiedzenia</a></td>
+        </tr></table>
+        """
+        return Response()
+
+    def _download_pdf(self, url: str):
+        return b"pdf", "https://example/card"
+
+    @staticmethod
+    def _extract_pdf_text(pdf: bytes) -> str:
+        return "Posiedzenie Komisji w dniu 21 września 2026 roku."
+
+
+def test_pdf_without_readable_time_creates_nonblocking_all_day_meeting():
+    commission = Commission(175953, "Komisja", "Komisja", "👮‍♂️")
+
+    meetings, problems = NoTimePdfClient().meetings(commission, date(2026, 7, 15))
+
+    assert len(meetings) == 1
+    assert meetings[0].provisional is True
+    assert meetings[0].start_time is None
+    assert len(problems) == 1
+    assert problems[0].blocking is False
+    assert "nie znaleziono godziny w PDF-ie" in str(problems[0])
