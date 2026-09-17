@@ -20,3 +20,44 @@ def test_unchanged_calendar_is_byte_for_byte_stable():
     first = build_calendar([meeting])
     second = build_calendar([meeting], previous=first)
     assert second == first
+
+
+def test_provisional_meeting_is_all_day_without_time_based_alarms():
+    commission = Commission(
+        175953,
+        "Praworządności i Bezpieczeństwa",
+        "Komisja Praworządności i Bezpieczeństwa Rady Dzielnicy XIII Podgórze",
+        "👮‍♂️",
+    )
+    meeting = Meeting(
+        commission,
+        "33/2026",
+        date(2026, 9, 21),
+        None,
+        "",
+        "https://example/page",
+        "https://example/page",
+        provisional=True,
+    )
+
+    text = build_calendar([meeting]).decode("utf-8").replace("\r\n ", "")
+
+    assert "SUMMARY:⚠️ Praworządności i Bezpieczeństwa – godzina nieznana" in text
+    assert "DTSTART;VALUE=DATE:20260921" in text
+    assert "DTEND;VALUE=DATE:20260922" in text
+    assert "BIP nie opublikował jeszcze zwołania z godziną i miejscem posied" in text
+    assert "BEGIN:VALARM" not in text
+
+
+def test_provisional_and_timed_versions_use_the_same_uid():
+    commission = Commission(175953, "Komisja", "Komisja", "👮‍♂️")
+    provisional = Meeting(
+        commission, "33/2026", date(2026, 9, 21), None, "",
+        "https://example/page", "https://example/page", provisional=True,
+    )
+    timed = Meeting(
+        commission, "33/2026", date(2026, 9, 21), time(18, 0),
+        "Rynek Podgórski 1, Kraków", "https://example/page", "https://example/card",
+    )
+
+    assert provisional.uid == timed.uid

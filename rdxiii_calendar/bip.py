@@ -42,13 +42,14 @@ class Meeting:
     commission: Commission
     number: str
     meeting_date: date
-    start_time: time
+    start_time: time | None
     location: str
     source_page: str
     attachment_card: str
     cancelled: bool = False
     duration_hours: int = 1
     kind: str = "commission"
+    provisional: bool = False
 
     @property
     def uid(self) -> str:
@@ -57,7 +58,7 @@ class Meeting:
 
     @property
     def starts_at(self) -> datetime:
-        return datetime.combine(self.meeting_date, self.start_time)
+        return datetime.combine(self.meeting_date, self.start_time or time.min)
 
     @property
     def ends_at(self) -> datetime:
@@ -110,10 +111,16 @@ class BipClient:
                 continue
             link = self._convocation_link(block)
             if not link:
+                result.append(Meeting(
+                    commission, number, table_date, None, "",
+                    commission.page_url, commission.page_url,
+                    self._is_cancelled(text), provisional=True,
+                ))
                 warnings.append(ParseProblem(
-                    f"Brak linku do zwołania dla {number or table_date} – pominięto wpis",
+                    f"Brak linku do zwołania dla {number or table_date} – dodano jako wydarzenie całodniowe",
                     blocking=False,
                 ))
+                seen.add(key)
                 continue
             card_url = urljoin(commission.page_url, link)
             try:

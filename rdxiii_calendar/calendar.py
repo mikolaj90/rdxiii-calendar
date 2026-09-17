@@ -45,14 +45,21 @@ def build_calendar(meetings: list[Meeting], previous: bytes | None = None) -> by
         }
     for meeting in sorted(meetings, key=lambda item: item.starts_at):
         event = Event()
-        title = f"{meeting.commission.emoji} {meeting.commission.name}"
+        if meeting.provisional:
+            title = f"⚠️ {meeting.commission.name} – godzina nieznana"
+        else:
+            title = f"{meeting.commission.emoji} {meeting.commission.name}"
         if meeting.cancelled:
             title = f"ODWOŁANE – {title}"
             event.add("status", "CANCELLED")
         event.add("uid", meeting.uid)
         event.add("summary", title)
-        event.add("dtstart", meeting.starts_at.replace(tzinfo=WARSAW))
-        event.add("dtend", meeting.ends_at.replace(tzinfo=WARSAW))
+        if meeting.provisional:
+            event.add("dtstart", meeting.meeting_date)
+            event.add("dtend", meeting.meeting_date + timedelta(days=1))
+        else:
+            event.add("dtstart", meeting.starts_at.replace(tzinfo=WARSAW))
+            event.add("dtend", meeting.ends_at.replace(tzinfo=WARSAW))
         if meeting.location:
             event.add("location", meeting.location)
         if meeting.kind == "session":
@@ -60,6 +67,13 @@ def build_calendar(meetings: list[Meeting], previous: bytes | None = None) -> by
                 f"{meeting.commission.full_name}\n\n"
                 f"Szczegóły sesji: {meeting.attachment_card}\n"
                 f"Terminy sesji: {meeting.source_page}"
+            )
+        elif meeting.provisional:
+            description = (
+                f"{meeting.commission.full_name}\n"
+                f"Numer posiedzenia: {meeting.number or 'nie podano'}\n\n"
+                "BIP nie opublikował jeszcze zwołania z godziną i miejscem posiedzenia.\n"
+                f"Strona komisji: {meeting.source_page}"
             )
         else:
             description = (
@@ -70,12 +84,13 @@ def build_calendar(meetings: list[Meeting], previous: bytes | None = None) -> by
             )
         event.add("description", description)
         event.add("url", meeting.attachment_card)
-        for delta, label in ((timedelta(hours=-24), "Komisja jutro"), (timedelta(hours=-1), "Komisja za godzinę")):
-            alarm = Alarm()
-            alarm.add("action", "DISPLAY")
-            alarm.add("description", label)
-            alarm.add("trigger", delta)
-            event.add_component(alarm)
+        if not meeting.provisional:
+            for delta, label in ((timedelta(hours=-24), "Komisja jutro"), (timedelta(hours=-1), "Komisja za godzinę")):
+                alarm = Alarm()
+                alarm.add("action", "DISPLAY")
+                alarm.add("description", label)
+                alarm.add("trigger", delta)
+                event.add_component(alarm)
         old_event = previous_events.get(meeting.uid)
         if old_event is not None and _signature(old_event) == _signature(event):
             event.add("dtstamp", old_event.decoded("DTSTAMP"))

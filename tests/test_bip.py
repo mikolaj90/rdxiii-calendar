@@ -16,7 +16,7 @@ class StubBipClient(BipClient):
         return Response()
 
 
-def test_missing_convocation_link_is_nonblocking_and_meeting_is_skipped():
+def test_missing_convocation_link_creates_nonblocking_all_day_meeting():
     html = """
     <table><tr>
       <td>33/2026</td><td>21.09.2026</td>
@@ -28,7 +28,11 @@ def test_missing_convocation_link_is_nonblocking_and_meeting_is_skipped():
 
     meetings, problems = StubBipClient(html).meetings(commission, date(2026, 7, 15))
 
-    assert meetings == []
+    assert len(meetings) == 1
+    assert meetings[0].number == "33/2026"
+    assert meetings[0].meeting_date == date(2026, 9, 21)
+    assert meetings[0].start_time is None
+    assert meetings[0].provisional is True
     assert len(problems) == 1
     assert problems[0].blocking is False
     assert "Brak linku do zwołania dla 33/2026" in str(problems[0])
