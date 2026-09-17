@@ -45,7 +45,7 @@ def test_provisional_meeting_is_all_day_without_time_based_alarms():
     assert "SUMMARY:⚠️ Praworządności i Bezpieczeństwa – godzina nieznana" in text
     assert "DTSTART;VALUE=DATE:20260921" in text
     assert "DTEND;VALUE=DATE:20260922" in text
-    assert "BIP nie opublikował jeszcze zwołania z godziną i miejscem posied" in text
+    assert "Nie udało się jeszcze ustalić godziny ani miejsca posiedzenia" in text
     assert "BEGIN:VALARM" not in text
 
 

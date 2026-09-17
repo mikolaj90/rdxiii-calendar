@@ -72,7 +72,7 @@ def build_calendar(meetings: list[Meeting], previous: bytes | None = None) -> by
             description = (
                 f"{meeting.commission.full_name}\n"
                 f"Numer posiedzenia: {meeting.number or 'nie podano'}\n\n"
-                "BIP nie opublikował jeszcze zwołania z godziną i miejscem posiedzenia.\n"
+                "Nie udało się jeszcze ustalić godziny ani miejsca posiedzenia na podstawie publikacji BIP.\n"
                 f"Strona komisji: {meeting.source_page}"
             )
         else:
