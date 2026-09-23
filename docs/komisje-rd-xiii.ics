@@ -453,6 +453,29 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:🎭 KiD
+DTSTART;TZID=Europe/Warsaw:20261006T184500
+DTEND;TZID=Europe/Warsaw:20261006T194500
+DTSTAMP:20260923T175559Z
+UID:rdxiii-175944-35-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Kultury i Dialogu Rady Dzielnicy XIII Podgórze\nNumer
+  posiedzenia: 35/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/
+ zalaczniki/dokumenty/n/712235/karta\nStrona komisji: https://www.bip.krako
+ w.pl/?dok_id=175944&metka=1
+LOCATION:ul. Łutnia 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/712235/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:🏛️ Sesja Rady Dzielnicy XIII
 DTSTART;TZID=Europe/Warsaw:20261020T180000
 DTEND;TZID=Europe/Warsaw:20261020T220000
