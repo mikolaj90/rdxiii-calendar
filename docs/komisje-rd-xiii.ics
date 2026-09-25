@@ -385,39 +385,16 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🧑‍🎓 Komisja Współpracy z Młodzieżą
-DTSTART;TZID=Europe/Warsaw:20260928T170000
-DTEND;TZID=Europe/Warsaw:20260928T180000
-DTSTAMP:20260917T174311Z
+DTSTART;TZID=Europe/Warsaw:20260929T170000
+DTEND;TZID=Europe/Warsaw:20260929T180000
+DTSTAMP:20260925T180258Z
 UID:rdxiii-175974-33-2026@mikolaj90.github.io
 DESCRIPTION:Komisja Współpracy z Młodzieżą Rady Dzielnicy XIII Podgó
  rze\nNumer posiedzenia: 33/2026\n\nZwołanie posiedzenia: https://www.bip.
- krakow.pl/zalaczniki/dokumenty/n/711263/karta\nStrona komisji: https://www
+ krakow.pl/zalaczniki/dokumenty/n/712979/karta\nStrona komisji: https://www
  .bip.krakow.pl/?dok_id=175974&metka=1
 LOCATION:Rynek Podgórski 1\, Kraków
-URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/711263/karta
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Komisja jutro
-TRIGGER:-P1D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Komisja za godzinę
-TRIGGER:-PT1H
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:🕵️‍♂️ Komisja Rewizyjna
-DTSTART;TZID=Europe/Warsaw:20260928T180000
-DTEND;TZID=Europe/Warsaw:20260928T190000
-DTSTAMP:20260917T174311Z
-UID:rdxiii-175962-33-2026@mikolaj90.github.io
-DESCRIPTION:Komisja Rewizyjna Rady Dzielnicy XIII Podgórze\nNumer posiedz
- enia: 33/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/zalaczni
- ki/dokumenty/n/711260/karta\nStrona komisji: https://www.bip.krakow.pl/?do
- k_id=175962&metka=1
-LOCATION:Rynek Podgórski 1\, Kraków
-URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/711260/karta
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/712979/karta
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Komisja jutro
@@ -441,6 +418,29 @@ DESCRIPTION:Komisja Sportu Rady Dzielnicy XIII Podgórze\nNumer posiedzeni
  d=175968&metka=1
 LOCATION:Rynek Podgórski 1\, Kraków
 URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/712160/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🕵️‍♂️ Komisja Rewizyjna
+DTSTART;TZID=Europe/Warsaw:20260929T180000
+DTEND;TZID=Europe/Warsaw:20260929T190000
+DTSTAMP:20260925T180258Z
+UID:rdxiii-175962-33-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Rewizyjna Rady Dzielnicy XIII Podgórze\nNumer posiedz
+ enia: 33/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/zalaczni
+ ki/dokumenty/n/712943/karta\nStrona komisji: https://www.bip.krakow.pl/?do
+ k_id=175962&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/712943/karta
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Komisja jutro
