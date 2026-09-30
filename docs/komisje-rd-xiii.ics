@@ -326,6 +326,29 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:🏗️ Komisja Infrastruktury
+DTSTART;TZID=Europe/Warsaw:20260918T183000
+DTEND;TZID=Europe/Warsaw:20260918T193000
+DTSTAMP:20260930T183226Z
+UID:rdxiii-175941-33-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Infrastruktury Rady Dzielnicy XIII Podgórze\nNumer po
+ siedzenia: 33/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/zal
+ aczniki/dokumenty/n/714424/karta\nStrona komisji: https://www.bip.krakow.p
+ l/?dok_id=175941&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/714424/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:⚠️ Komisja Praworządności i Bezpieczeństwa – godzina niez
  nana
 DTSTART;VALUE=DATE:20260921
@@ -453,6 +476,29 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:📐 Komisja Planowania Przestrzennego
+DTSTART;TZID=Europe/Warsaw:20261005T173000
+DTEND;TZID=Europe/Warsaw:20261005T183000
+DTSTAMP:20260930T183226Z
+UID:rdxiii-175950-34-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Planowania Przestrzennego Rady Dzielnicy XIII Podgórz
+ e\nNumer posiedzenia: 34/2026\n\nZwołanie posiedzenia: https://www.bip.kr
+ akow.pl/zalaczniki/dokumenty/n/714292/karta\nStrona komisji: https://www.b
+ ip.krakow.pl/?dok_id=175950&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/714292/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:🎭 KiD
 DTSTART;TZID=Europe/Warsaw:20261006T184500
 DTEND;TZID=Europe/Warsaw:20261006T194500
@@ -464,6 +510,29 @@ DESCRIPTION:Komisja Kultury i Dialogu Rady Dzielnicy XIII Podgórze\nNumer
  w.pl/?dok_id=175944&metka=1
 LOCATION:ul. Łutnia 1\, Kraków
 URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/712235/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🚌 TORD
+DTSTART;TZID=Europe/Warsaw:20261007T173000
+DTEND;TZID=Europe/Warsaw:20261007T183000
+DTSTAMP:20260930T183226Z
+UID:rdxiii-175977-23-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Transportu i Organizacji Ruchu Drogowego Rady Dzielnic
+ y XIII Podgórze\nNumer posiedzenia: 23/2026\n\nZwołanie posiedzenia: htt
+ ps://www.bip.krakow.pl/zalaczniki/dokumenty/n/714203/karta\nStrona komisji
+ : https://www.bip.krakow.pl/?dok_id=175977&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/714203/karta
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Komisja jutro
