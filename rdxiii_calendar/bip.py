@@ -13,6 +13,8 @@ import requests
 from bs4 import BeautifulSoup, Tag
 from pdf2image import convert_from_bytes
 from pypdf import PdfReader
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 from .dates import extract_dates
 
@@ -69,6 +71,12 @@ class ParseError(RuntimeError):
     pass
 
 
+class BipFetchError(RuntimeError):
+    """Czytelny błąd po wyczerpaniu ponowień połączenia z BIP-em."""
+
+    pass
+
+
 @dataclass(frozen=True)
 class ParseProblem:
     message: str
@@ -82,11 +90,28 @@ class BipClient:
     def __init__(self, timeout: int = 30) -> None:
         self.session = requests.Session()
         self.session.headers["User-Agent"] = "rdxiii-calendar/1.0 (+https://github.com/mikolaj90/rdxiii-calendar)"
+        retries = Retry(
+            total=4,
+            connect=4,
+            read=4,
+            status=4,
+            backoff_factor=2,
+            status_forcelist=(429, 500, 502, 503, 504),
+            allowed_methods=frozenset({"GET"}),
+            raise_on_status=False,
+        )
+        self.session.mount("https://", HTTPAdapter(max_retries=retries))
         self.timeout = timeout
 
     def get(self, url: str) -> requests.Response:
-        response = self.session.get(url, timeout=self.timeout)
-        response.raise_for_status()
+        try:
+            response = self.session.get(url, timeout=self.timeout)
+            response.raise_for_status()
+        except requests.RequestException as exc:
+            raise BipFetchError(
+                f"BIP nie odpowiedział po 5 próbach: {url} "
+                f"({exc.__class__.__name__}: {exc})"
+            ) from None
         return response
 
     def meetings(self, commission: Commission, since: date) -> tuple[list[Meeting], list[ParseProblem]]:
