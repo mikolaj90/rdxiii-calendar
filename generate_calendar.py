@@ -4,7 +4,7 @@ import logging
 from datetime import date
 from pathlib import Path
 
-from rdxiii_calendar.bip import BipClient, SessionClient, load_commissions
+from rdxiii_calendar.bip import BipClient, BipFetchError, SessionClient, load_commissions
 from rdxiii_calendar.calendar import build_calendar
 
 
@@ -17,17 +17,21 @@ def main() -> int:
     client = BipClient()
     meetings = []
     blocking_problems = []
-    for commission in load_commissions(Path("config/commissions.json")):
-        found, problems = client.meetings(commission, args.since)
-        meetings.extend(found)
-        for problem in problems:
-            message = f"{commission.name}: {problem}"
-            if problem.blocking:
-                blocking_problems.append(message)
-            else:
-                logging.warning(message)
-        logging.info("%s: %d posiedzeń", commission.name, len(found))
-    sessions, session_problems = SessionClient().meetings(args.since)
+    try:
+        for commission in load_commissions(Path("config/commissions.json")):
+            found, problems = client.meetings(commission, args.since)
+            meetings.extend(found)
+            for problem in problems:
+                message = f"{commission.name}: {problem}"
+                if problem.blocking:
+                    blocking_problems.append(message)
+                else:
+                    logging.warning(message)
+            logging.info("%s: %d posiedzeń", commission.name, len(found))
+        sessions, session_problems = SessionClient().meetings(args.since)
+    except BipFetchError as exc:
+        logging.error("Nie zaktualizowano kalendarza – %s", exc)
+        return 2
     meetings.extend(sessions)
     for problem in session_problems:
         message = f"Sesje: {problem}"
