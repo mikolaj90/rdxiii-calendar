@@ -19,6 +19,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: update-calendar
@@ -41,8 +42,98 @@ jobs:
       - name: Testy
         run: python -m pytest -q
       - name: Generowanie kalendarza
-        run: python generate_calendar.py
+        id: generate
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python generate_calendar.py 2>&1 | tee generation.log
+      - name: Czytelne zgłoszenie awarii
+        if: steps.generate.outcome == 'failure'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+            const log = fs.readFileSync('generation.log', 'utf8');
+            const lines = log.split(/\r?\n/).filter(Boolean);
+            const diagnosis = lines.find(line => line.includes('Nie zaktualizowano kalendarza'))
+              || lines.slice(-1)[0]
+              || 'Generator zakończył się nieznanym błędem.';
+            const page = diagnosis.includes('dok_id=59877')
+              ? 'terminy sesji'
+              : (diagnosis.match(/dok_id=(\d+)/)?.[1] ? `strona BIP ${diagnosis.match(/dok_id=(\d+)/)[1]}` : 'generator');
+            const title = `Kalendarz – awaria: ${page}`;
+            const label = 'awaria-automatu';
+            try {
+              await github.rest.issues.getLabel({ owner: context.repo.owner, repo: context.repo.repo, name: label });
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              await github.rest.issues.createLabel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: label,
+                color: 'B60205',
+                description: 'Automatycznie wykryta awaria aktualizacji kalendarza'
+              });
+            }
+            const open = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: label,
+              per_page: 20
+            });
+            const body = [
+              `**Przyczyna:** ${diagnosis}`,
+              '',
+              `Uruchomienie: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              '',
+              'Kalendarz nie został nadpisany niepełnymi danymi. Automat spróbuje ponownie przy następnym uruchomieniu.'
+            ].join('\n');
+            if (open.data.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: open.data[0].number,
+                body
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: [label],
+                assignees: ['mikolaj90']
+              });
+            }
+      - name: Zamknięcie zgłoszenia po naprawie
+        if: steps.generate.outcome == 'success'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const open = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'awaria-automatu',
+              per_page: 20
+            });
+            for (const issue of open.data) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: 'Automat ponownie pobrał dane i poprawnie wygenerował kalendarz.'
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: 'closed'
+              });
+            }
       - name: Zapis aktualizacji
+        if: steps.generate.outcome == 'success'
         run: |
           git config user.name "rdxiii-calendar[bot]"
           git config user.email "rdxiii-calendar[bot]@users.noreply.github.com"
