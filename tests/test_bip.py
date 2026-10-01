@@ -1,8 +1,9 @@
 from datetime import date
 
+import requests
 from bs4 import BeautifulSoup
 
-from rdxiii_calendar.bip import BipClient, Commission
+from rdxiii_calendar.bip import BipClient, BipFetchError, Commission
 
 
 class StubBipClient(BipClient):
@@ -85,3 +86,34 @@ def test_pdf_without_readable_time_creates_nonblocking_all_day_meeting():
     assert len(problems) == 1
     assert problems[0].blocking is False
     assert "nie znaleziono godziny w PDF-ie" in str(problems[0])
+
+
+def test_client_configures_retries_for_transient_bip_failures():
+    client = BipClient()
+    retries = client.session.get_adapter("https://").max_retries
+
+    assert retries.total == 4
+    assert retries.connect == 4
+    assert retries.read == 4
+    assert 503 in retries.status_forcelist
+
+
+def test_fetch_error_is_short_and_contains_the_failing_url(monkeypatch):
+    client = BipClient()
+    url = "https://www.bip.krakow.pl/?dok_id=59877&metka=1"
+
+    def fail(*args, **kwargs):
+        raise requests.ConnectTimeout("timed out")
+
+    monkeypatch.setattr(client.session, "get", fail)
+
+    try:
+        client.get(url)
+    except BipFetchError as exc:
+        message = str(exc)
+    else:
+        raise AssertionError("BipFetchError was not raised")
+
+    assert "po 5 próbach" in message
+    assert url in message
+    assert "ConnectTimeout" in message
