@@ -592,16 +592,16 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🏥 Komisja Społeczna i Zdrowia
-DTSTART;TZID=Europe/Warsaw:20261015T190000
-DTEND;TZID=Europe/Warsaw:20261015T200000
-DTSTAMP:20261008T192319Z
+DTSTART;TZID=Europe/Warsaw:20261020T173000
+DTEND;TZID=Europe/Warsaw:20261020T183000
+DTSTAMP:20261015T175158Z
 UID:rdxiii-175965-34-2026@mikolaj90.github.io
 DESCRIPTION:Komisja Społeczna i Zdrowia Rady Dzielnicy XIII Podgórze\nNu
  mer posiedzenia: 34/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.
- pl/zalaczniki/dokumenty/n/716242/karta\nStrona komisji: https://www.bip.kr
+ pl/zalaczniki/dokumenty/n/717859/karta\nStrona komisji: https://www.bip.kr
  akow.pl/?dok_id=175965&metka=1
 LOCATION:Rynek Podgórski 1\, Kraków
-URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/716242/karta
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/717859/karta
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Komisja jutro
@@ -647,6 +647,29 @@ DESCRIPTION:Komisja Rewizyjna Rady Dzielnicy XIII Podgórze\nNumer posiedz
  k_id=175962&metka=1
 LOCATION:Rynek Podgórski 1\, Kraków
 URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/613300/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:👮‍♂️ Komisja Praworządności i Bezpieczeństwa
+DTSTART;TZID=Europe/Warsaw:20261027T190000
+DTEND;TZID=Europe/Warsaw:20261027T200000
+DTSTAMP:20261015T175158Z
+UID:rdxiii-175953-34-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Praworządności i Bezpieczeństwa Rady Dzielnicy XIII
+  Podgórze\nNumer posiedzenia: 34/2026\n\nZwołanie posiedzenia: https://w
+ ww.bip.krakow.pl/zalaczniki/dokumenty/n/717838/karta\nStrona komisji: http
+ s://www.bip.krakow.pl/?dok_id=175953&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/717838/karta
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Komisja jutro
