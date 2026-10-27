@@ -26,7 +26,11 @@ def _signature(event: Event) -> tuple:
     )) + (tuple(alarms),)
 
 
-def build_calendar(meetings: list[Meeting], previous: bytes | None = None) -> bytes:
+def build_calendar(
+    meetings: list[Meeting],
+    previous: bytes | None = None,
+    preserve_source_ids: set[int] | None = None,
+) -> bytes:
     calendar = Calendar()
     calendar.add("prodid", "-//mikolaj90//Komisje RD XIII//PL")
     calendar.add("version", "2.0")
@@ -43,6 +47,7 @@ def build_calendar(meetings: list[Meeting], previous: bytes | None = None) -> by
             for component in old_calendar.walk("VEVENT")
             if component.get("UID")
         }
+    generated_uids: set[str] = set()
     for meeting in sorted(meetings, key=lambda item: item.starts_at):
         event = Event()
         if meeting.provisional:
@@ -97,4 +102,12 @@ def build_calendar(meetings: list[Meeting], previous: bytes | None = None) -> by
         else:
             event.add("dtstamp", now)
         calendar.add_component(event)
+        generated_uids.add(meeting.uid)
+
+    # Przy częściowej aktualizacji zachowaj stare wydarzenia z wadliwego źródła.
+    for source_id in preserve_source_ids or set():
+        prefix = f"rdxiii-{source_id}-"
+        for uid, old_event in previous_events.items():
+            if uid.startswith(prefix) and uid not in generated_uids:
+                calendar.add_component(old_event)
     return calendar.to_ical()
