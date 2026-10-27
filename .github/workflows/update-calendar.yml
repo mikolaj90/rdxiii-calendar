@@ -46,22 +46,25 @@ jobs:
         continue-on-error: true
         run: |
           set -o pipefail
-          python generate_calendar.py 2>&1 | tee generation.log
+          python generate_calendar.py --problems-output generation-problems.txt 2>&1 | tee generation.log
       - name: Czytelne zgłoszenie awarii
-        if: steps.generate.outcome == 'failure'
+        if: steps.generate.outcome == 'failure' || hashFiles('generation-problems.txt') != ''
         uses: actions/github-script@v8
         with:
           script: |
             const fs = require('fs');
             const log = fs.readFileSync('generation.log', 'utf8');
             const lines = log.split(/\r?\n/).filter(Boolean);
-            const diagnosis = lines.find(line => line.includes('Nie zaktualizowano kalendarza'))
-              || lines.slice(-1)[0]
-              || 'Generator zakończył się nieznanym błędem.';
+            const partial = fs.existsSync('generation-problems.txt');
+            const diagnosis = partial
+              ? fs.readFileSync('generation-problems.txt', 'utf8').trim()
+              : (lines.find(line => line.includes('Nie zaktualizowano kalendarza'))
+                || lines.slice(-1)[0]
+                || 'Generator zakończył się nieznanym błędem.');
             const page = diagnosis.includes('dok_id=59877')
               ? 'terminy sesji'
               : (diagnosis.match(/dok_id=(\d+)/)?.[1] ? `strona BIP ${diagnosis.match(/dok_id=(\d+)/)[1]}` : 'generator');
-            const title = `Kalendarz – awaria: ${page}`;
+            const title = partial ? 'Kalendarz – częściowa aktualizacja' : `Kalendarz – awaria: ${page}`;
             const label = 'awaria-automatu';
             try {
               await github.rest.issues.getLabel({ owner: context.repo.owner, repo: context.repo.repo, name: label });
@@ -87,7 +90,9 @@ jobs:
               '',
               `Uruchomienie: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
               '',
-              'Kalendarz nie został nadpisany niepełnymi danymi. Automat spróbuje ponownie przy następnym uruchomieniu.'
+              partial
+                ? 'Pozostałe poprawne wydarzenia zostały opublikowane. Dotychczasowe wydarzenia z wadliwego źródła zachowano.'
+                : 'Kalendarz nie został nadpisany niepełnymi danymi. Automat spróbuje ponownie przy następnym uruchomieniu.'
             ].join('\n');
             if (open.data.length) {
               await github.rest.issues.createComment({
@@ -107,7 +112,7 @@ jobs:
               });
             }
       - name: Zamknięcie zgłoszenia po naprawie
-        if: steps.generate.outcome == 'success'
+        if: steps.generate.outcome == 'success' && hashFiles('generation-problems.txt') == ''
         uses: actions/github-script@v8
         with:
           script: |
