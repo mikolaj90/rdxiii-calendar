@@ -61,3 +61,24 @@ def test_provisional_and_timed_versions_use_the_same_uid():
     )
 
     assert provisional.uid == timed.uid
+
+
+def test_partial_update_preserves_old_events_from_problematic_source():
+    old_meeting = Meeting(
+        Commission(175938, "Komisja Edukacji", "Komisja Edukacji", "E"),
+        "33/2026", date(2026, 9, 11), time(18, 0), "Kraków", "page", "card",
+    )
+    other_meeting = Meeting(
+        Commission(175941, "Komisja Infrastruktury", "Komisja Infrastruktury", "I"),
+        "34/2026", date(2026, 10, 29), time(19, 0), "Kraków", "page", "card",
+    )
+    previous = build_calendar([old_meeting])
+
+    updated = build_calendar(
+        [other_meeting],
+        previous=previous,
+        preserve_source_ids={175938},
+    ).decode("utf-8")
+
+    assert old_meeting.uid in updated
+    assert other_meeting.uid in updated
