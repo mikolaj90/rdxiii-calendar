@@ -866,6 +866,29 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:🏥 Komisja Społeczna i Zdrowia
+DTSTART;TZID=Europe/Warsaw:20261109T194500
+DTEND;TZID=Europe/Warsaw:20261109T204500
+DTSTAMP:20261102T222739Z
+UID:rdxiii-175965-35-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Społeczna i Zdrowia Rady Dzielnicy XIII Podgórze\nNu
+ mer posiedzenia: 35/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.
+ pl/zalaczniki/dokumenty/n/721732/karta\nStrona komisji: https://www.bip.kr
+ akow.pl/?dok_id=175965&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/721732/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:🏛️ Sesja Rady Dzielnicy XIII
 DTSTART;TZID=Europe/Warsaw:20261117T180000
 DTEND;TZID=Europe/Warsaw:20261117T220000
