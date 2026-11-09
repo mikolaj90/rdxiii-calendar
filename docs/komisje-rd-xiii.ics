@@ -820,17 +820,40 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:🏥 Komisja Społeczna i Zdrowia
+DTSTART;TZID=Europe/Warsaw:20261109T194500
+DTEND;TZID=Europe/Warsaw:20261109T204500
+DTSTAMP:20261102T222739Z
+UID:rdxiii-175965-35-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Społeczna i Zdrowia Rady Dzielnicy XIII Podgórze\nNu
+ mer posiedzenia: 35/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.
+ pl/zalaczniki/dokumenty/n/721732/karta\nStrona komisji: https://www.bip.kr
+ akow.pl/?dok_id=175965&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/721732/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:🧑‍🎓 Komisja Współpracy z Młodzieżą
-DTSTART;TZID=Europe/Warsaw:20261109T184500
-DTEND;TZID=Europe/Warsaw:20261109T194500
-DTSTAMP:20261027T192350Z
+DTSTART;TZID=Europe/Warsaw:20261116T184500
+DTEND;TZID=Europe/Warsaw:20261116T194500
+DTSTAMP:20261109T230652Z
 UID:rdxiii-175974-35-2026@mikolaj90.github.io
 DESCRIPTION:Komisja Współpracy z Młodzieżą Rady Dzielnicy XIII Podgó
  rze\nNumer posiedzenia: 35/2026\n\nZwołanie posiedzenia: https://www.bip.
- krakow.pl/zalaczniki/dokumenty/n/720427/karta\nStrona komisji: https://www
+ krakow.pl/zalaczniki/dokumenty/n/723568/karta\nStrona komisji: https://www
  .bip.krakow.pl/?dok_id=175974&metka=1
 LOCATION:Rynek Podgórski 1\, Kraków
-URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/720427/karta
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/723568/karta
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Komisja jutro
@@ -844,39 +867,16 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:🕵️‍♂️ Komisja Rewizyjna
-DTSTART;TZID=Europe/Warsaw:20261109T191500
-DTEND;TZID=Europe/Warsaw:20261109T201500
-DTSTAMP:20261027T192350Z
+DTSTART;TZID=Europe/Warsaw:20261116T191500
+DTEND;TZID=Europe/Warsaw:20261116T201500
+DTSTAMP:20261109T230652Z
 UID:rdxiii-175962-35-2026@mikolaj90.github.io
 DESCRIPTION:Komisja Rewizyjna Rady Dzielnicy XIII Podgórze\nNumer posiedz
  enia: 35/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/zalaczni
- ki/dokumenty/n/720412/karta\nStrona komisji: https://www.bip.krakow.pl/?do
+ ki/dokumenty/n/723565/karta\nStrona komisji: https://www.bip.krakow.pl/?do
  k_id=175962&metka=1
 LOCATION:Rynek Podgórski 1\, Kraków
-URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/720412/karta
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Komisja jutro
-TRIGGER:-P1D
-END:VALARM
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Komisja za godzinę
-TRIGGER:-PT1H
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:🏥 Komisja Społeczna i Zdrowia
-DTSTART;TZID=Europe/Warsaw:20261109T194500
-DTEND;TZID=Europe/Warsaw:20261109T204500
-DTSTAMP:20261102T222739Z
-UID:rdxiii-175965-35-2026@mikolaj90.github.io
-DESCRIPTION:Komisja Społeczna i Zdrowia Rady Dzielnicy XIII Podgórze\nNu
- mer posiedzenia: 35/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.
- pl/zalaczniki/dokumenty/n/721732/karta\nStrona komisji: https://www.bip.kr
- akow.pl/?dok_id=175965&metka=1
-LOCATION:Rynek Podgórski 1\, Kraków
-URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/721732/karta
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/723565/karta
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Komisja jutro
