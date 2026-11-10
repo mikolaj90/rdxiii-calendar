@@ -911,6 +911,29 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:👩‍🏫 Komisja Edukacji
+DTSTART;TZID=Europe/Warsaw:20261120T180000
+DTEND;TZID=Europe/Warsaw:20261120T190000
+DTSTAMP:20261110T203438Z
+UID:rdxiii-175938-35-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Edukacji Rady Dzielnicy XIII Podgórze\nNumer posiedze
+ nia: 35/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/zalacznik
+ i/dokumenty/n/723907/karta\nStrona komisji: https://www.bip.krakow.pl/?dok
+ _id=175938&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/723907/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:🎭 KiD
 DTSTART;TZID=Europe/Warsaw:20261208T180000
 DTEND;TZID=Europe/Warsaw:20261208T190000
