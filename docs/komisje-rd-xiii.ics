@@ -934,6 +934,29 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:🚌 TORD
+DTSTART;TZID=Europe/Warsaw:20261202T173000
+DTEND;TZID=Europe/Warsaw:20261202T183000
+DTSTAMP:20261118T213237Z
+UID:rdxiii-175977-25-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Transportu i Organizacji Ruchu Drogowego Rady Dzielnic
+ y XIII Podgórze\nNumer posiedzenia: 25/2026\n\nZwołanie posiedzenia: htt
+ ps://www.bip.krakow.pl/zalaczniki/dokumenty/n/725614/karta\nStrona komisji
+ : https://www.bip.krakow.pl/?dok_id=175977&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/725614/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:🎭 KiD
 DTSTART;TZID=Europe/Warsaw:20261208T180000
 DTEND;TZID=Europe/Warsaw:20261208T190000
