@@ -934,6 +934,29 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:🏗️ Komisja Infrastruktury
+DTSTART;TZID=Europe/Warsaw:20261120T190000
+DTEND;TZID=Europe/Warsaw:20261120T200000
+DTSTAMP:20261124T231416Z
+UID:rdxiii-175941-35-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Infrastruktury Rady Dzielnicy XIII Podgórze\nNumer po
+ siedzenia: 35/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/zal
+ aczniki/dokumenty/n/727198/karta\nStrona komisji: https://www.bip.krakow.p
+ l/?dok_id=175941&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/727198/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:👮‍♂️ Komisja Praworządności i Bezpieczeństwa
 DTSTART;TZID=Europe/Warsaw:20261123T200000
 DTEND;TZID=Europe/Warsaw:20261123T210000
@@ -980,6 +1003,52 @@ TRIGGER:-PT1H
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:👩‍🏫 Komisja Edukacji
+DTSTART;TZID=Europe/Warsaw:20261207T180000
+DTEND;TZID=Europe/Warsaw:20261207T190000
+DTSTAMP:20261124T231416Z
+UID:rdxiii-175938-36-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Edukacji Rady Dzielnicy XIII Podgórze\nNumer posiedze
+ nia: 36/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.pl/zalacznik
+ i/dokumenty/n/727189/karta\nStrona komisji: https://www.bip.krakow.pl/?dok
+ _id=175938&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/727189/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:🏥 Komisja Społeczna i Zdrowia
+DTSTART;TZID=Europe/Warsaw:20261207T190000
+DTEND;TZID=Europe/Warsaw:20261207T200000
+DTSTAMP:20261124T231416Z
+UID:rdxiii-175965-36-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Społeczna i Zdrowia Rady Dzielnicy XIII Podgórze\nNu
+ mer posiedzenia: 36/2026\n\nZwołanie posiedzenia: https://www.bip.krakow.
+ pl/zalaczniki/dokumenty/n/727207/karta\nStrona komisji: https://www.bip.kr
+ akow.pl/?dok_id=175965&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/727207/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:🎭 KiD
 DTSTART;TZID=Europe/Warsaw:20261208T180000
 DTEND;TZID=Europe/Warsaw:20261208T190000
@@ -991,6 +1060,29 @@ DESCRIPTION:Komisja Kultury i Dialogu Rady Dzielnicy XIII Podgórze\nNumer
  w.pl/?dok_id=175944&metka=1
 LOCATION:Rynek Podgórski 1\, Kraków
 URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/723226/karta
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja jutro
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Komisja za godzinę
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:📐 Komisja Planowania Przestrzennego
+DTSTART;TZID=Europe/Warsaw:20261209T180000
+DTEND;TZID=Europe/Warsaw:20261209T190000
+DTSTAMP:20261124T231416Z
+UID:rdxiii-175950-36-2026@mikolaj90.github.io
+DESCRIPTION:Komisja Planowania Przestrzennego Rady Dzielnicy XIII Podgórz
+ e\nNumer posiedzenia: 36/2026\n\nZwołanie posiedzenia: https://www.bip.kr
+ akow.pl/zalaczniki/dokumenty/n/727201/karta\nStrona komisji: https://www.b
+ ip.krakow.pl/?dok_id=175950&metka=1
+LOCATION:Rynek Podgórski 1\, Kraków
+URL:https://www.bip.krakow.pl/zalaczniki/dokumenty/n/727201/karta
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:Komisja jutro
